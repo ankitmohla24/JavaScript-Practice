@@ -57,7 +57,35 @@ console.log(convert_Coins(154));
 
 
 
+//Problem6: Reverse a string
+function str_Reverse(str){
+    return str.split('').reverse().join('');
+}
+console.log(str_Reverse("ankit"));
 
+
+//Problem7: Sort an array of objects
+function radius_comparator(a,b){
+    return (a.radius-b.radius);
+}
+var radii = [{radius: 5}, {radius: 9}, {radius: 2}];
+radii.sort(radius_comparator);
+
+
+//Problem8: Return the number of values in an array. Not the length
+function array_Length(arr){
+    var length = 0;
+    for(var p in arr){
+        if(arr.hasOwnProperty(p)){
+            length = length+1;
+        }
+    }
+    return length;
+}
+var rand_arr= [3,6];
+rand_arr[4] = undefined;
+rand_arr[8] = 10;
+console.log(array_Length(rand_arr));
 
 
 
