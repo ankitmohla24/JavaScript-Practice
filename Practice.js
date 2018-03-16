@@ -88,6 +88,21 @@ rand_arr[8] = 10;
 console.log(array_Length(rand_arr));
 
 
+// List Comprehension  
+//Filter:    Callback function (elem, index, array) parameter not given is taken undefined. returns boolean
+
+[1,5,2,76,12,98].filter(function(elem){return elem%2==0;});
+
+// Map:    Callback function (elem, index, array) parameter not given is taken undefined. return a transformed value.
+
+[1,5,2,76,12,98].map(function(elem){return elem*elem;});
+
+
+// Reduce:    Callback function (prev, current, index, array) parameter not given is taken undefined. return a reduced value from the array
+// like the sum of the array.
+
+[1,5,2,76,12,98].reduce(function(prev, curr){return prev+curr;}, 0);
+
 
 
 
