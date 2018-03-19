@@ -176,5 +176,61 @@ console.log("naman".isPalindrome());
 
 
 
+// Prototypical Inheritance: Part of ES5
+//parent class Nut 
+var Nut = function(color, type) {
+  this.color = color;
+  this.type = type;
+};
+Nut.prototype.favNutType = function() {
+  return 'Are ' + this.type + 's your favorite type of nut?';
+};
+Nut.prototype.sayHello = function() {
+  return 'Hello, I am a '+ this.type + '!';
+};
+//now the subclass Almond
+var Almond = function(color, type, shape) {
+  Nut.call(this, color, type); //get some props set up by Nut
+  this.shape = 'teardrop';
+};
+Almond.prototype = Object.create(Nut.prototype); //set inheritance
+Almond.prototype.constructor = Almond; //set Almond constructor func
+Almond.prototype.favNutType = function() {
+  return 'The' + this.type + ' looks like a ' + this.shape + '.';
+};
+var peeledAlmond = new Almond('white', 'almond', 'teardrop');
+console.log(peeledAlmond.constructor);//Function, Almond constructor
+console.log(peeledAlmond.sayHello());  //'Hello, I am a almond!'
+console.log(peeledAlmond.favNutType());  //'The almond looks like a teardrop.'
+/*In the above code, there are a few things worth taking particular note of. First, inside of the Almond constructor function, the Almond class is getting some of its properties created using the Nut constructor. This is observed on the line Nut.call(this, color, type). Later, the Almond.prototype = Object.create(Nut.prototype) line ensures that all instances created by the Almond constructor inherit the Nut.prototype ‘s methods. Finally, the line with Almond.prototype.constructor = Almond is used to set the Almond as an instance of an Almond. If this had not been done, an almond instance would not be seen as an instance of the Almond constructor. This can cause confusion and therefore should be handled every time.
+*/
+//pseudoclassical Instantiation: Part of ES6
+//parent class Nut
+class Nut {
+  constructor(color, type) {
+    this.color = color;
+    this.type = type;
+  }
+  favNutType() {
+    return `Are ${this.type}s your favorite type of nut?`;
+  }
+  sayHello() {
+    return `Hello, I am a ${this.type}!`;
+  }
+}
+//now the subclass Almond
+class Almond extends Nut {
+  constructor(color, type, shape) {
+    super(color, type);
+    this.shape = shape;
+  }
+  favNutType() {
+    return `The ${this.type} looks like a ${this.shape}.`;
+  }
+}
+const peeledAlmond = new Almond('white', 'almond', 'teardrop');
+console.log(peeledAlmond.constructor);//Function, Almond constructor
+console.log(peeledAlmond.sayHello());  //'Hello, I am a almond!'
+console.log(peeledAlmond.favNutType());  //'The almond looks like a    teardrop.'
 
 
