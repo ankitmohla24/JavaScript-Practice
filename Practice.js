@@ -141,6 +141,37 @@ function is_odd(elem){
 console.log(fulfill(arr,is_odd));
 
 
+//Problem13: Constructor function for a Rectangle
+function Rectangle(height,weight){
+    this.height = height;
+    this.weight = weight;
+}
+Rectangle.prototype.area = function(){
+    return this.height * this.weight;
+};
+Rectangle.prototype.perimeter = function(){
+    return (this.height + this.weight) * 2;
+};
+var rectangle = new Rectangle(3,4);
+console.log(rectangle.area());
+console.log(rectangle.perimeter());
+
+
+//Problem14: Point Object
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+    this.distance = function(another){
+        return Math.sqrt(((another.x-this.x)*(another.x-this.x)) + ((another.y-this.y)*(another.y-this.y)));
+    }
+}
+
+
+//Problem15: String is palindrome
+String.prototype.isPalindrome = function() {
+  return this.split('').reverse().join('') == this;
+}
+console.log("naman".isPalindrome());
 
 
 
