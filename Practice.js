@@ -90,27 +90,55 @@ console.log(array_Length(rand_arr));
 
 // List Comprehension  
 //Filter:    Callback function (elem, index, array) parameter not given is taken undefined. returns boolean
-
-[1,5,2,76,12,98].filter(function(elem){return elem%2==0;});
+//Problem11: Print all even numbers fron an array
+[1,5,2,76,12,98].filter(function(elem){return elem%2 === 0;});
 
 // Map:    Callback function (elem, index, array) parameter not given is taken undefined. return a transformed value.
-
 [1,5,2,76,12,98].map(function(elem){return elem*elem;});
 
 
 // Reduce:    Callback function (prev, current, index, array) parameter not given is taken undefined. return a reduced value from the array
 // like the sum of the array.
-
 [1,5,2,76,12,98].reduce(function(prev, curr){return prev+curr;}, 0);
 
 
+// Problem9: Return String of max length from an array
+function max_String(arr){
+    return arr.reduce(function(prev,curr){
+       var len = curr.length;
+        if (curr.length > prev.length) {
+          return curr;
+        } else {
+          return prev;
+        }
+      }, "");
+}
+var arr = ["abc", "bcde", "c"];
+console.log(max_String(arr));
 
 
+//Problem10: Sum of Squares of numbers in an array
+function sumOfSquares(arr){
+    return arr.reduce(function(prev,curr){
+        var squ = curr * curr;
+        return prev + squ;
+      }, 0);
+}
+var arr = [5,5,4,2];
+console.log(sumOfSquares(arr));
 
 
-
-
-
+//Problem12: Function taking an input function as filter
+function fulfill(arr, criteria){
+    return arr.filter(function(elem){
+        return !criteria(elem);
+    });
+}
+var arr = [3,6,4,7];
+function is_odd(elem){
+    return elem%2 !== 0;
+}
+console.log(fulfill(arr,is_odd));
 
 
 
