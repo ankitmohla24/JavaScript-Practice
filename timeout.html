@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>SlideShow</title>
+        <script>
+            var pictures = ['https://upload.wikimedia.org/wikipedia/commons/c/c5/The_spectacular_star-forming_Carina_Nebula_imaged_by_the_VLT_Survey_Telescope.jpg', 'https://upload.wikimedia.org/wikipedia/commons/d/df/Hooker_House%2C_Melbourne._Taken_by_Rennie_Ellis_between_1980_and_2000..png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/President_Ford_aboard_a_Russian_train_headed_for_Vladivostok_-_NARA_-_7160847.jpg/1024px-President_Ford_aboard_a_Russian_train_headed_for_Vladivostok_-_NARA_-_7160847.jpg' ];
+            function load(){
+                changePic(0);
+            }
+            
+            function changePic(n){
+                document.getElementById('imageCanvas').getElementsByTagName('img')[0].src = pictures[n % pictures.length];
+                setTimeout(function(){changePic(n+1);},5000);
+            }
+        </script>
+    </head>
+    <body onload="load();">
+        <h1 id='myHeader'>SlideShow</h1>
+        <div id = 'imageCanvas' style = 'width: 750px; height: 497px; margin: 0 auto'>
+            <img style = 'height: 100%; width: 100%'/>
+        </div>
+   </body>
+</html>
